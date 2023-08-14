@@ -5,6 +5,19 @@ window.onload = () => {
   showTime();
 };
 
+const showPopWin = () => {
+  const popWin = document.createElement('div');
+  popWin.className = 'pop-win';
+  document.querySelector('body').appendChild(popWin);
+
+  popWin.innerHTML = `
+      <div class="msg-win">
+        <h4>New book successfully added</h4>
+      </div>
+      `;
+  setTimeout(() => popWin.remove(), 2000);
+};
+
 const book = new AwesomeBooks('User', '#books');
 
 const bookContainer = document.getElementById('book-container');
@@ -42,7 +55,7 @@ const handleBookStorage = (e) => {
     const index = [...(document.querySelectorAll('.remove'))].indexOf(target);
     setTimeout(() => {
       book.delete(index);
-    }, 300);
+    }, 200);
   } else if (target.matches('#submit')) {
     e.preventDefault();
     const formData = new FormData(formValues);
@@ -51,12 +64,7 @@ const handleBookStorage = (e) => {
     book.store(title, author);
     formValues.reset();
     if (title && author) {
-      const confirm = document.getElementById('confirm');
-      confirm.textContent = `"${title}" by ${author} is added`;
-      confirm.style.display = 'green';
-      setTimeout(() => {
-        confirm.style.display = 'none';
-      }, 3000);
+      showPopWin();
     }
   }
   toggleNav(target);
