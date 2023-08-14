@@ -1,4 +1,4 @@
-import  AwesomeBooks from './Modules/books.js';
+import AwesomeBooks from './Modules/books.js';
 import showTime from './Modules/datetime.js';
 
 window.onload = () => {
@@ -12,7 +12,7 @@ const form = document.getElementById('myForm');
 const formValues = document.getElementById('form');
 const contact = document.getElementById('contact-container');
 
-const toggleNav=(target)=> {
+const toggleNav = (target) => {
   const children = [...document.querySelectorAll('.nav-link')];
   const index = children.indexOf(target);
 
@@ -33,9 +33,9 @@ const toggleNav=(target)=> {
   } else if (target.id === 'contact') {
     contact.classList.remove('hidden');
   }
-}
+};
 
-const handleBookStorage= (e)=> {
+const handleBookStorage = (e) => {
   const { target } = e;
   if (target.matches('.remove')) {
     target.parentNode.classList.add('fade-out');
@@ -53,23 +53,23 @@ const handleBookStorage= (e)=> {
     if (title && author) {
       const confirm = document.getElementById('confirm');
       confirm.textContent = `"${title}" by ${author} is added`;
-      confirm.style.display = 'block';
+      confirm.style.display = 'green';
       setTimeout(() => {
         confirm.style.display = 'none';
-      }, 2000);
+      }, 3000);
     }
   }
   toggleNav(target);
-}
+};
 
-const init=()=> {
+const init = () => {
   document.addEventListener('click', handleBookStorage);
   book.display();
-}
+};
 
-const deleteCookie=(cookieName)=> {
+const deleteCookie = (cookieName) => {
   document.cookie = `${cookieName}=; expires=Thu, 01 Jan 2023 00:00:00 UTC; path=/; domain=https://sagieramos.github.io/Awesome-books/;`;
-}
+};
 
 deleteCookie('myCookie');
 

@@ -1,7 +1,6 @@
 import { DateTime } from './luxon.js';
 
 const showTime = () => {
-    debugger;
   const dateTime = document.querySelector('#time');
   const timeDate = () => {
     setInterval(() => {
